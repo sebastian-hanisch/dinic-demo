@@ -79,7 +79,7 @@ Diese Demo zeigt, wie viel Suchaufwand das spart, wie eine **Zeigerliste** Sackg
 )
 st.caption(
     "Anders als die Fall-Demos im Portfolio, die an einem Anwendungsfall mehrere Verfahren vergleichen, zeigt diese Demo - zweites Stück der Netzwerkfluss-Linie der \"Konzepte\"-Reihe, Fortsetzung der Demo \"Edmonds-Karp\" - **ein** Verfahren an einem wachsenden Beispiel. "
-    "Auf Einheitsnetzen ist Dinic der Algorithmus von **Hopcroft–Karp** aus der Matching-Linie. Die Schwächen dieses Stücks sind die Ansatzpunkte der nächsten: **Push-Relabel** (Fluss ohne Wege, gebaut) und **Successive Shortest Paths** (die Kosten entscheiden) - noch nicht gebaut."
+    "Auf Einheitsnetzen ist Dinic der Algorithmus von **Hopcroft–Karp** aus der Matching-Linie. Die Schwächen dieses Stücks sind die Ansatzpunkte der nächsten: **Push-Relabel** (Fluss ohne Wege, gebaut) und **Successive Shortest Paths** (die Kosten entscheiden, gebaut)."
 )
 
 with st.expander("So funktioniert Dinic", expanded=True):
@@ -363,7 +363,7 @@ st.markdown(
 | **Ein Zeitpunkt** | Das Netz gilt für eine Periode; wer über mehrere Perioden mit Lagerhaltung plant, dehnt das Netz zeitlich aus. | Fall-Demo \"Distributionsnetzwerk-Optimierung\" |
 """
 )
-st.caption("Die Netzwerkfluss-Linie ist als Ganzes geplant: Edmonds-Karp, Dinic (dieses Stück), Push-Relabel (gebaut), Successive Shortest Paths, Cycle-Canceling, Cost Scaling, Mehrgüterfluss, Column Generation, Garg-Könemann, Fixkosten-Netzwerkdesign, Benders-Zerlegung und Slope Scaling - bisher sind die ersten drei gebaut.")
+st.caption("Die Netzwerkfluss-Linie ist als Ganzes geplant: Edmonds-Karp, Dinic (dieses Stück), Push-Relabel (gebaut), Successive Shortest Paths (gebaut), Cycle-Canceling, Cost Scaling, Mehrgüterfluss, Column Generation, Garg-Könemann, Fixkosten-Netzwerkdesign, Benders-Zerlegung und Slope Scaling - bisher sind die ersten vier gebaut.")
 
 st.markdown("---")
 
