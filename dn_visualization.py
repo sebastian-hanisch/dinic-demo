@@ -82,10 +82,9 @@ def _hover_points(fig, net, entries):
 
 
 def _labels(fig, points):
-    """points: [(x, y, Text)]"""
-    if points:
-        fig.add_trace(go.Scatter(x=[p[0] for p in points], y=[p[1] for p in points], mode="text", text=[p[2] for p in points], textposition="middle right",
-                                 hoverinfo="skip", showlegend=False, textfont=dict(size=12)))
+    """points: [(x, y, Text)] - als Annotationen mit heller Hinterlegung, damit sie Kanten, Pfeile und Knotenbeschriftungen nicht unlesbar machen."""
+    for x, y, text in points:
+        fig.add_annotation(x=x, y=y, text=text, showarrow=False, xanchor="left", font=dict(size=11, color="#111"), bgcolor="rgba(255,255,255,0.88)", borderpad=1)
 
 
 def _arc_name(net, i):
@@ -129,10 +128,10 @@ def build_flow(net, flow, path=None, cut=None, reach=None, height=460):
         hover.append((curve, f"{_arc_name(net, i)}: Fluss {flow[i]} von {cap}, Kosten {cost} je Einheit"))
         if i in cut_set:
             special["cut"].append(curve)
-            labels.append((curve[3][0] + 1.5, curve[3][1], f"{cap}"))
+            labels.append((curve[0][3] + 1.5, curve[1][3], f"{cap}"))
         elif i in path_set:
             special["path"].append(curve)
-            labels.append((curve[3][0] + 1.5, curve[3][1], f"{flow[i]}/{cap}"))
+            labels.append((curve[0][3] + 1.5, curve[1][3], f"{flow[i]}/{cap}"))
         else:
             groups["idle" if flow[i] == 0 else "full" if flow[i] == cap else "part"].append((curve, flow[i]))
     _lines(fig, [c for c, _ in groups["idle"]], C.COLORS["faint"], 1.2, "ungenutzt")
@@ -190,7 +189,7 @@ def build_levels(net, phase, stage, height=460):
         hover.append((curve, f"{net.names[a]} → {net.names[b]} (Niveau {phase.levels[a]} → {phase.levels[b]}): Rest {rest(e)}" + ("" if forward else " (Rückkante)")))
         if e in cur_arcs:
             current.append(curve)
-            labels.append((curve[3][0] + 1.5, curve[3][1], f"{cur.bottleneck}"))
+            labels.append((curve[0][3] + 1.5, curve[1][3], f"{cur.bottleneck}"))
         elif e in earlier:
             mid.append(curve)
         elif rest(e) == 0:
@@ -220,14 +219,14 @@ def build_levels(net, phase, stage, height=460):
         text=[net.labels[v] for v in on], textposition=_node_text_positions(net, on), hovertext=[f"{net.names[v]}: Niveau {phase.levels[v]}" for v in on], hoverinfo="text",
         marker=dict(symbol=["square" if v in (net.s, net.t) else "circle" for v in on], size=[13 if v in (net.s, net.t) else 10 for v in on], color=[phase.levels[v] for v in on],
                     colorscale=C.COLORS["levels"], cmin=0, cmax=top, showscale=True, line=dict(width=1.5, color="#333"),
-                    colorbar=dict(title=dict(text="Niveau", side="right"), orientation="h", thickness=9, len=0.6, x=0.5, xanchor="center", y=-0.04, yanchor="top",
-                                  tickmode="linear", tick0=0, dtick=1 if top <= 8 else 2))))
+                    colorbar=dict(title=dict(text="Niveau", side="top"), orientation="h", thickness=9, len=0.6, x=0.5, xanchor="center", y=-0.02, yanchor="top",
+                                  tickmode="linear", tick0=0, dtick=1 if top <= 6 else 2))))
     if dead:
         d = sorted(dead)
         fig.add_trace(go.Scatter(x=[net.pos[v][0] for v in d], y=[net.pos[v][1] for v in d], mode="markers", name="Sackgasse der Tiefensuche", hovertext=[f"{net.names[v]}: Sackgasse" for v in d],
                                  hoverinfo="text", marker=dict(symbol="x", size=13, color=C.COLORS["dead"], line=dict(width=2))))
     fig = _layout(fig, net, height)
-    fig.update_layout(margin=dict(l=10, r=10, t=10, b=50), legend=dict(orientation="h", y=-0.2))         # Platz für die waagerechte Farbskala unter dem Netz
+    fig.update_layout(margin=dict(l=10, r=10, t=10, b=90), legend=dict(orientation="h", y=-0.3))         # Platz für die waagerechte Farbskala unter dem Netz
     return fig
 
 
@@ -255,7 +254,7 @@ def build_phase_hist(phases, rounds, current=None, height=300):
     fig.update_xaxes(title="Phasen bzw. Wege bis zum Ende", dtick=1)
     fig.update_yaxes(title="Netze")
     fig = _base(fig, height)
-    fig.update_layout(legend=dict(orientation="h", y=-0.35), height=height + 50)
+    fig.update_layout(legend=dict(orientation="h", y=-0.35), height=height + 50, margin=dict(l=10, r=10, t=30 if current is not None else 10, b=10))
     return fig
 
 
