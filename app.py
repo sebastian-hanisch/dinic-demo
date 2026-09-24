@@ -79,7 +79,7 @@ Diese Demo zeigt, wie viel Suchaufwand das spart, wie eine **Zeigerliste** Sackg
 )
 st.caption(
     "Anders als die Fall-Demos im Portfolio, die an einem Anwendungsfall mehrere Verfahren vergleichen, zeigt diese Demo - zweites Stück der Netzwerkfluss-Linie der \"Konzepte\"-Reihe, Fortsetzung der Demo \"Edmonds-Karp\" - **ein** Verfahren an einem wachsenden Beispiel. "
-    "Auf Einheitsnetzen ist Dinic der Algorithmus von **Hopcroft–Karp** aus der Matching-Linie. Die Schwächen dieses Stücks sind die Ansatzpunkte der nächsten: **Push-Relabel** (Fluss ohne Wege) und **Successive Shortest Paths** (die Kosten entscheiden) - noch nicht gebaut."
+    "Auf Einheitsnetzen ist Dinic der Algorithmus von **Hopcroft–Karp** aus der Matching-Linie. Die Schwächen dieses Stücks sind die Ansatzpunkte der nächsten: **Push-Relabel** (Fluss ohne Wege, gebaut) und **Successive Shortest Paths** (die Kosten entscheiden) - noch nicht gebaut."
 )
 
 with st.expander("So funktioniert Dinic", expanded=True):
@@ -357,13 +357,13 @@ st.markdown(
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
 | **Nur die Menge zählt** | Dinic füllt dieselben Wege auf wie Edmonds-Karp und ist genauso kostenblind: welche Lanes der Fluss benutzt, entscheidet die Reihenfolge der Kanten, nicht der Preis. | **Successive Shortest Paths**: der billigste Weg im Restgraphen entscheidet |
-| **Fluss wird über Wege gebaut** | Auch Dinic legt den Fluss Weg für Weg. Im schlechtesten Fall kostet das $O(V^2 E)$; auf den Netzen dieser Demo braucht es weit weniger als $|V|-1$ Phasen (höchstens 4 von 18 auf den Standardnetzen), aber die Schranke bleibt. | **Push-Relabel**: Überschüsse lokal schieben, Höhen anheben |
+| **Fluss wird über Wege gebaut** | Auch Dinic legt den Fluss Weg für Weg. Im schlechtesten Fall kostet das $O(V^2 E)$; auf den Netzen dieser Demo braucht es weit weniger als $|V|-1$ Phasen (höchstens 4 von 18 auf den Standardnetzen), aber die Schranke bleibt. | **Push-Relabel** (gebaut): Überschüsse lokal schieben, Höhen anheben |
 | **Die Wege sind gleich lang** | Auf dem geschichteten Distributionsnetz genügt bei größeren Netzen meist **eine** Phase. Mehr als zwei Phasen gibt es dort selten (im Mittel 1,7, höchstens 4); erst Einheitsnetze wie die Treppe treiben die Phasenzahl hoch - und dort ist der Vorsprung gegen Edmonds-Karp klein. | Die Treppe zeigt die Grenze |
 | **Ein Gut, teilbar** | Alle Waren sind gleich und beliebig teilbar. Mehrere Güter auf gemeinsamen Kanten machen den Fluss im Allgemeinen gebrochen. | **Mehrgüterfluss** (später in dieser Linie) |
 | **Ein Zeitpunkt** | Das Netz gilt für eine Periode; wer über mehrere Perioden mit Lagerhaltung plant, dehnt das Netz zeitlich aus. | Fall-Demo \"Distributionsnetzwerk-Optimierung\" |
 """
 )
-st.caption("Die Netzwerkfluss-Linie ist als Ganzes geplant: Edmonds-Karp, Dinic (dieses Stück), Push-Relabel, Successive Shortest Paths, Cycle-Canceling, Cost Scaling, Mehrgüterfluss, Column Generation, Garg-Könemann, Fixkosten-Netzwerkdesign, Benders-Zerlegung und Slope Scaling - bisher sind die ersten beiden gebaut.")
+st.caption("Die Netzwerkfluss-Linie ist als Ganzes geplant: Edmonds-Karp, Dinic (dieses Stück), Push-Relabel (gebaut), Successive Shortest Paths, Cycle-Canceling, Cost Scaling, Mehrgüterfluss, Column Generation, Garg-Könemann, Fixkosten-Netzwerkdesign, Benders-Zerlegung und Slope Scaling - bisher sind die ersten drei gebaut.")
 
 st.markdown("---")
 
