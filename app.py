@@ -359,11 +359,11 @@ st.markdown(
 | **Nur die Menge zählt** | Dinic füllt dieselben Wege auf wie Edmonds-Karp und ist genauso kostenblind: welche Lanes der Fluss benutzt, entscheidet die Reihenfolge der Kanten, nicht der Preis. | **Successive Shortest Paths**: der billigste Weg im Restgraphen entscheidet |
 | **Fluss wird über Wege gebaut** | Auch Dinic legt den Fluss Weg für Weg. Im schlechtesten Fall kostet das $O(V^2 E)$; auf den Netzen dieser Demo braucht es weit weniger als $|V|-1$ Phasen (höchstens 4 von 18 auf den Standardnetzen), aber die Schranke bleibt. | **Push-Relabel** (gebaut): Überschüsse lokal schieben, Höhen anheben |
 | **Die Wege sind gleich lang** | Auf dem geschichteten Distributionsnetz genügt bei größeren Netzen meist **eine** Phase. Mehr als zwei Phasen gibt es dort selten (im Mittel 1,7, höchstens 4); erst Einheitsnetze wie die Treppe treiben die Phasenzahl hoch - und dort ist der Vorsprung gegen Edmonds-Karp klein. | Die Treppe zeigt die Grenze |
-| **Ein Gut, teilbar** | Alle Waren sind gleich und beliebig teilbar. Mehrere Güter auf gemeinsamen Kanten machen den Fluss im Allgemeinen gebrochen. | **Mehrgüterfluss** (später in dieser Linie) |
+| **Ein Gut, teilbar** | Alle Waren sind gleich und beliebig teilbar. Mehrere Güter auf gemeinsamen Kanten machen den Fluss im Allgemeinen gebrochen. | **Mehrgüterfluss** (gebaut: multicommodity-demo) |
 | **Ein Zeitpunkt** | Das Netz gilt für eine Periode; wer über mehrere Perioden mit Lagerhaltung plant, dehnt das Netz zeitlich aus. | Fall-Demo \"Distributionsnetzwerk-Optimierung\" |
 """
 )
-st.caption("Die Netzwerkfluss-Linie ist als Ganzes geplant: Edmonds-Karp, Dinic (dieses Stück), Push-Relabel (gebaut), Successive Shortest Paths (gebaut), Cycle-Canceling (gebaut), Cost Scaling (gebaut), Mehrgüterfluss, Column Generation, Garg-Könemann, Fixkosten-Netzwerkdesign, Benders-Zerlegung und Slope Scaling - bisher sind die ersten sechs gebaut.")
+st.caption("Die Netzwerkfluss-Linie ist als Ganzes geplant: Edmonds-Karp, Dinic (dieses Stück), Push-Relabel (gebaut), Successive Shortest Paths (gebaut), Cycle-Canceling (gebaut), Cost Scaling (gebaut), Mehrgüterfluss (gebaut), Column Generation, Garg-Könemann, Fixkosten-Netzwerkdesign, Benders-Zerlegung und Slope Scaling - bisher sind die ersten sieben gebaut.")
 
 st.markdown("---")
 
