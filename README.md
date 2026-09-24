@@ -8,13 +8,13 @@ Edmonds-Karp sucht für jeden Weg eine neue Breitensuche. **Dinic** nutzt sie be
 Danach ist die Entfernung von S nach T echt gewachsen, eine neue **Phase** beginnt – höchstens |V| − 1 Phasen. Eine **Zeigerliste** lässt die Tiefensuche jede Sackgasse nur einmal besuchen. Vehikel wie in der Edmonds-Karp-Demo: ein Distributionsnetz (Werke → Verteilzentren → Filialen), dazu Einheitsnetze.
 
 **Einordnung in die Reihe (die Kanten des Graphen):** dieses Stück behebt die Schwäche der Wurzel (eine Breitensuche je Weg; ihre durchsuchten Kanten wachsen schneller als das Netz, Steigung 1,7 bis 1,9). Auf Einheitsnetzen ist Dinic der Algorithmus von **Hopcroft–Karp** aus der Matching-Linie.
-Seine eigenen Schwächen sind die Ansatzpunkte der nächsten: Fluss wird weiter über Wege gebaut (**Push-Relabel**, gebaut: [push-relabel-demo](https://github.com/sebastian-hanisch/push-relabel-demo)), und die Kosten entscheiden nicht (**Successive Shortest Paths**, gebaut: [ssp-demo](https://github.com/sebastian-hanisch/ssp-demo)). Bisher gebaut: die Wurzel, dieses Stück, Push-Relabel und Successive Shortest Paths.
+Seine eigenen Schwächen sind die Ansatzpunkte der nächsten: Fluss wird weiter über Wege gebaut (**Push-Relabel**, gebaut: [push-relabel-demo](https://github.com/sebastian-hanisch/push-relabel-demo)), und die Kosten entscheiden nicht (**Successive Shortest Paths**, gebaut: [ssp-demo](https://github.com/sebastian-hanisch/ssp-demo)). Bisher gebaut: die Wurzel, dieses Stück, Push-Relabel, Successive Shortest Paths und Cycle-Canceling.
 ```
 edmonds-karp-demo (Wurzel: Restgraph, Rückkanten, Max-Flow = Min-Cut)                  [gebaut]
   ├─ dinic-demo (viele kürzeste Wege je Phase: Niveaugraph, blockierender Fluss)        [dieses Stück]
   ├─ push-relabel-demo (kein Weg: Überschüsse schieben, Höhen anheben)                 [gebaut]
   └─ ssp-demo (Kosten: der billigste Weg im Restgraphen, Potenziale)                    [gebaut]
-       ├─ cycle-canceling-demo → Netzwerksimplex (network-flow-demo)                    [geplant / gebaut als Fall-Demo]
+       ├─ cycle-canceling-demo → Netzwerksimplex (network-flow-demo)                    [gebaut / gebaut als Fall-Demo]
        ├─ cost-scaling-demo (Push-Relabel + ε-Skalierung, das nutzt OR-Tools)           [geplant]
        └─ multicommodity-demo → Column Generation, Garg-Könemann,
           Fixkosten-Netzwerkdesign → Benders-Zerlegung, Slope Scaling                   [geplant]
