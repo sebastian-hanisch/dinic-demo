@@ -388,7 +388,7 @@ with st.expander("📐 Mathematische Formulierung"):
 
 **Laufzeit.** Wegen $\ell(t)\le |V|-1$ gibt es höchstens $|V|-1$ Phasen: **$O(|V|^2\cdot|E|)$** im Allgemeinen. Auf Einheitsnetzen (alle Kapazitäten 1) dauert eine Phase $O(|E|)$, und nach $\sqrt{|E|}$ Phasen bleibt höchstens $\sqrt{|E|}$ Restfluss: **$O(|E|\sqrt{|E|})$**; für bipartite Zuordnung ist das der Algorithmus von Hopcroft und Karp mit $O(|E|\sqrt{|V|})$.
 
-**Zeigerliste.** Ohne Zeiger beginnt die Tiefensuche je Weg bei der ersten Kante; die Wege sind dieselben (gesperrte Kanten und Sackgassen bleiben es innerhalb der Phase), aber jede Sackgasse kann je Weg wieder besucht werden: $O(|V|\cdot|E|)$ je Weg statt insgesamt je Phase.
+**Zeigerliste.** Ohne Zeiger beginnt die Tiefensuche je Weg bei der ersten Kante; die Wege sind dieselben (gesperrte Kanten und Sackgassen bleiben es innerhalb der Phase), aber jede Sackgasse kann je Weg wieder besucht werden: jede Wegesuche durchläuft jede Kante höchstens einmal, kostet also bis zu $O(|E|)$; bei bis zu $|E|$ Wegen sind das bis zu $O(|E|^2)$ je Phase statt $O(|V|\cdot|E|)$ mit Zeigerliste.
 
 **Beweis.** Wie bei Edmonds-Karp: scheitert die Breitensuche, ist $Z$ die von $s$ erreichbare Menge und $|f|=c(Z,\bar Z)$ (Max-Flow = Min-Cut).
 

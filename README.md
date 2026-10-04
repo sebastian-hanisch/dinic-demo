@@ -1,6 +1,6 @@
 # Dinic – Niveaugraph und blockierender Fluss – Streamlit-Demo
 
-*(noch nicht deployed)*
+**[→ Demo live ausprobieren](https://sebastianhanisch-dinic-demo.streamlit.app/)**
 
 Zweites Stück der **Netzwerkfluss-Linie** der "Konzepte"-Reihe für die Website "Sebastian Hanisch – Operations Research und Machine Learning", Fortsetzung der Demo [Edmonds-Karp](https://github.com/sebastian-hanisch/edmonds-karp-demo):
 anders als die Fall-Demos im Portfolio (ein Anwendungsfall, mehrere Verfahren im Vergleich) zeigt diese Demo **ein** Verfahren – **Dinics Phasen aus Niveaugraph und blockierendem Fluss** – an einem wachsenden Beispiel.
